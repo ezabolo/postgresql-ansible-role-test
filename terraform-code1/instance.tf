@@ -29,6 +29,17 @@ resource "aws_instance" "postgres-prod-node1" {
     private_key = "${file("${var.PATH_TO_PRIVATE_KEY}")}"
   }
 
+
+  # Calling ansible for postgresql installation and configuration 
+ 
+  provisioner "local-exec" {
+    command = "ansible-playbook -u centos -i '${aws_instance.postgres-prod-node1.public_dns},' main.yml"
+ }
+
+ tags { Name = "postgres-prod-node1"
+    }
+
+
 }
 
 #Dev postgresql server
@@ -59,7 +70,13 @@ resource "aws_instance" "postgres-dev-node1" {
     private_key = "${file("${var.PATH_TO_PRIVATE_KEY}")}"
   }
 
- tags { Name = "postgres-dev-node1"
+ # Calling ansible for postgresql installation and configuration
+
+  provisioner "local-exec" {
+    command = "ansible-playbook -u centos -i '${aws_instance.postgres-dev-node1.public_dns},' main.yml"
+  }
+
+  tags { Name = "postgres-dev-node1"
     }
 
 }
