@@ -33,7 +33,7 @@ resource "aws_instance" "postgres-prod-node1" {
   # Calling ansible for postgresql installation and configuration 
  
   provisioner "local-exec" {
-    command = "ansible-playbook -u centos -i '${aws_instance.postgres-prod-node1.public_dns},' main.yml"
+    command = "ansible-playbook -u centos -i '${aws_instance.postgres-prod-node1.public_dns},' install_postgres_prod.yml"
  }
 
  tags { Name = "postgres-prod-node1"
@@ -73,7 +73,7 @@ resource "aws_instance" "postgres-dev-node1" {
  # Calling ansible for postgresql installation and configuration
 
   provisioner "local-exec" {
-    command = "ansible-playbook -u centos -i '${aws_instance.postgres-dev-node1.public_dns},' main.yml"
+    command = "ansible-playbook -u centos -i '${aws_instance.postgres-dev-node1.public_dns},' install_postgres_dev.yml"
   }
 
   tags { Name = "postgres-dev-node1"
