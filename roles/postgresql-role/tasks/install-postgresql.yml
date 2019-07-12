@@ -1,0 +1,19 @@
+---
+ - name: install included version when postgresql_version is equal to default 
+   yum: name={{ item }} state=present 
+   with_items:
+     - postgresql
+     - postgresql-server
+     - postgresql-contrib  
+   when: postgresql_version == "default"  
+
+ - block: 
+    - name: install required repo when version not default
+      yum: name={{ postgresql_repo_url }} state=present
+
+    - name: install required postgresql packages
+      yum: name={{ item }} state=present 
+      with_items: 
+       - "{{ postgresql_packages }}"
+   when: postgresql_version != "default"   
+     

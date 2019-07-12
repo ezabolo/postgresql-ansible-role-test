@@ -1,0 +1,12 @@
+--- 
+- name: create the database 
+  postgresql_db:
+    name: "{{ item.name }}"
+    lc_collate: "{{ item.lc_collate }}" 
+    lc_ctype: "{{ item.lc_ctype }}"
+    encoding: "{{ item.encoding }}"
+    template: "{{ item.template }}"
+    state: "{{ item.state }}"
+  with_items: 
+    - "{{ db_list }}"
+ 

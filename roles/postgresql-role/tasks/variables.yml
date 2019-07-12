@@ -1,0 +1,23 @@
+---
+- name: specifying postgresql version 
+  include_vars: 
+    file: redhat-postgres-version.yml
+
+- name: include variables for non default installation for Redhat distros 
+  include_vars:  
+    file: redhat-config-dir.yml
+  when: postgresql_version != 'default' 
+
+- name: including global variables 
+  include_vars: 
+    file: global-vars.yml
+
+- name: including the list of dbs to be created 
+  include_vars: 
+    file: databases.yml
+- name: including the listof db users to be created
+  include_vars: 
+    file: db_users.yml
+  
+
+

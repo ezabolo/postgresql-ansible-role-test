@@ -1,0 +1,17 @@
+max_connections = {{ hostvars[inventory_hostname]['max_connections'] }}
+shared_buffers = {{ shared_buffers }}
+work_mem = {{ work_mem }}
+maintenance_work_mem = {{ maintenance_work_mem }}
+checkpoint_segments = {{ checkpoint_segments }}
+checkpoint_timeout = {{ checkpoint_timeout }}
+effective_cache_size = {{ effective_cache_size }}
+shared_buffers =  {{ shared_buffers }}                   # min 128kB
+log_destination = 'stderr'
+logging_collector = on
+log_directory = 'pg_log'
+log_filename = 'postgresql-%a.log'
+log_truncate_on_rotation = on
+log_rotation_age = 1d
+log_rotation_size = 0
+log_line_prefix = '< %m >'
+listen_addresses = '*'

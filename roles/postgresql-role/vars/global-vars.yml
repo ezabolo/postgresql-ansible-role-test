@@ -1,0 +1,7 @@
+--- 
+ shared_buffers: 2GB
+ work_mem: 8MB
+ maintenance_work_mem: 4GB 
+ checkpoint_segments: 16
+ checkpoint_timeout: 1h
+ effective_cache_size: 4GB

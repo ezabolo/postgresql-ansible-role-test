@@ -1,0 +1,32 @@
+---
+#including variables 
+- include_tasks: variables.yml 
+
+# tasks file for postgresql-role
+#Install postgresql
+- include_tasks: install-postgresql.yml 
+
+#Check if the database is already initialized 
+- stat:
+   path: "{{ postgresql_data_dir }}/PG_VERSION"
+  register: pg_version
+#initialize the database 
+- include_tasks: initialize-postgresql.yml 
+  when: not pg_version.stat.exists 
+
+# Configure postgresql
+- include_tasks: configure-postgresql.yml    
+
+# Start postgresql service 
+- include_tasks: services.yml 
+
+# Setup database 
+- include_tasks: setup-databases.yml 
+# Create Db users 
+- include_tasks: create-dbusers.yml
+
+# Ensure service postgresql is running and enable 
+- include_tasks: services.yml
+
+
+  

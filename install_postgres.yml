@@ -1,0 +1,8 @@
+---
+- name: Calling the role to install postgresql   
+  hosts: dev 
+  gather_facts: yes
+  become: true
+  become_user: root
+  roles: 
+    - postgresql-role 

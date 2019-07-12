@@ -1,0 +1,11 @@
+---
+# handlers file for postgresql-role
+- set_fact: 
+   postgresql_daemon: postgresql 
+  when: postgresql_version == "default"
+
+- name: restart postgresql
+  service:
+    name: "{{ postgresql_daemon }}"
+    state: restarted 
+

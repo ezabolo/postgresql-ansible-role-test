@@ -1,0 +1,31 @@
+--- 
+ - set_fact: 
+    postgresql_config_path: /var/lib/pgsql/data
+   when: postgresql_version == "default"
+
+ - name: ensure the config path exists and is a directory 
+   file: 
+    path: "{{ postgresql_config_path }}"
+    owner: "{{ postgresql_user }}"
+    group: "{{ postgresql_group }}"
+    mode: 0700
+
+ - name: configure postgresql 
+   template: 
+    src: "postgresql.conf.j2"
+    dest: "{{ postgresql_config_path }}/postgresql.conf"
+    owner: "{{ postgresql_user }}"
+    group: "{{ postgresql_group }}"
+    mode: 0600
+   notify: restart postgresql
+ 
+ - name: Configure pg_hba
+   template:
+    src: "pg_hba.conf.j2"
+    dest: "{{ postgresql_config_path }}/pg_hba.conf"
+    owner: "{{ postgresql_user }}"
+    group: "{{ postgresql_group }}"
+    mode: 0600
+   notify: restart postgresql
+
+

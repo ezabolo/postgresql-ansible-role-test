@@ -1,0 +1,11 @@
+---
+- set_fact: 
+   postgresql_daemon: postgresql
+  when: postgresql_version == "default"
+
+- name: ensure postgres is enabled and running 
+  service:
+    name: "{{ postgresql_daemon }}"
+    state: started 
+    enabled: yes
+

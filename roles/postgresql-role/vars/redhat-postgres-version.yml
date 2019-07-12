@@ -1,0 +1,5 @@
+---
+ postgresql_version: 9.3  #set to default if you want do a default installation 
+ postgresql_repo_url: https://download.postgresql.org/pub/repos/yum/9.3/redhat/rhel-7-x86_64/pgdg-redhat93-9.3-3.noarch.rpm
+ postgresql_user: postgres
+ postgresql_group: postgres

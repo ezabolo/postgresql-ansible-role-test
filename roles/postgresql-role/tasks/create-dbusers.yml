@@ -1,0 +1,10 @@
+---
+- name: creating db users
+  postgresql_user:
+    db: "{{ item.db_name }}"
+    name: "{{ item.username }}"
+    password: "{{ item.password }}"
+    priv: "{{ item.priv }}"
+    state: "{{ item.state }}"
+  with_items:   
+   - '{{ db_users }}"

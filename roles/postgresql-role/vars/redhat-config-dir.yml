@@ -1,0 +1,12 @@
+---
+ postgresql_data_dir: /var/lib/pgsql/{{ postgresql_version }}/data
+ postgresql_bin_path: /usr/pgsql-{{ postgresql_version }}/bin/
+ postgresql_config_path: /var/lib/pgsql/{{ postgresql_version }}/data
+ postgresql_daemon: postgresql-{{postgresql_version  }}
+ postgresql_packages:
+  - postgresql{{postgresql_version | replace('.','')}}
+  - postgresql{{postgresql_version | replace('.','')}}-server
+  - postgresql{{postgresql_version | replace('.','')}}-contrib
+  - postgresql-devel 
+  - python-psycopg2
+

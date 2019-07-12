@@ -1,0 +1,34 @@
+---
+    
+ - name: initialize postgresql when using default version on RHEL 6 
+   shell: /sbin/service postgresql initdb
+   when: 
+     - postgresql_version == "default"
+     - ansible_distribution == "CentOS"  
+     - ansible_distribution_major_version == "6"
+      
+    
+ - name: initialize postgresql when using default version on RHEL|CentOS 7 
+   shell: /usr/bin/postgresql-setup initdb
+   when:
+     - postgresql_version == "default"
+     - ansible_distribution == "CentOS" 
+     - ansible_distribution_major_version == "7"
+     
+ 
+ - name: initialize postgresql when using non include version on RHEL|CentOS 6
+   shell: /sbin/service postgresql-{{postgresql_version| replace('.','') }}  initdb
+   when:
+     - postgresql_version != "default"
+     - ansible_distribution == "CentOS" 
+     - ansible_distribution_major_version == "6"
+
+ - name: initialize postgresql for non include version in RHEL 7
+   shell: /usr/pgsql-{{ postgresql_version}}/bin/postgresql{{postgresql_version| replace('.','') }}-setup initdb  
+   when:
+     - postgresql_version != "default"
+     - ansible_distribution == "CentOS" 
+     - ansible_distribution_major_version == "7"
+ 
+   
+   
