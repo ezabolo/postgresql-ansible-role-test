@@ -1,1 +1,2 @@
-# ansible-role-for-postgres-test
+# psotgresql-ansible-role-test
+Ansible postgresql role
