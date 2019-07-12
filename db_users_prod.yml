@@ -1,6 +1,6 @@
 ---
- db_users: 
-  - username: admin 
+ db_users:
+  - username: admin
     db_name: db1
     password: Ch@ngeMe!
     priv: ALL
@@ -8,4 +8,4 @@
     db_name: db1
     password: Ch@ngeMe!
     priv: ALL
-  
+

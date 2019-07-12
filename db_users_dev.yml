@@ -1,0 +1,19 @@
+---
+ db_users:
+  - username: admin
+    db_name: db1
+    password: Ch@ngeMe!
+    priv: ALL
+  - username: service1
+    db_name: db1
+    password: Ch@ngeMe!
+    priv: ALL
+  - username: user1
+    db_name: db1
+    password: Ch@ngeMe!
+    priv: ALL
+  - username: user2
+    db_name: db1
+    password: Ch@ngeMe!
+    priv: ALL
+

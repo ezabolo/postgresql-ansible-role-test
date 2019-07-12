@@ -4,5 +4,8 @@
   gather_facts: yes
   become: true
   become_user: root
+  vars_file: 
+   - ./db_users_prod.yml
+   - ./databases.yml
   roles: 
     - postgresql-role 
