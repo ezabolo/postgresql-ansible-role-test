@@ -4,7 +4,7 @@
   gather_facts: yes
   become: true
   become_user: root
-  vars_file: 
+  vars_files: 
     - ./db_users_dev.yml
     - ./databases.yml
   roles: 
